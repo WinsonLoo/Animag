@@ -1,4 +1,4 @@
-import Tester from '../lib/posts.js'
+import Tester from '../lib/post.js'
 
 export default function Anime (){
     return(
