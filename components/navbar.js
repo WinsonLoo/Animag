@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const siteTitle = 'Animag'
 
-export default function Navbar({home,contact}) {
+export default function Navbar({home,contact,about}) {
     return (
         <div>
             <Head>
@@ -37,7 +37,7 @@ export default function Navbar({home,contact}) {
 
                         </span>
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href ="/">
+                        <Link href ="/page/about">
                         <a>About</a>
                         </Link>
 
@@ -50,7 +50,7 @@ export default function Navbar({home,contact}) {
                     </>
                     ):(
                     <>
-                        <Link href="./index">
+                        <Link href="/">
                             <a className = "fill-current h-10 w-10 mr-10"><img src = "/am.jpg" alt ="Image not Found"/></a>
                         </Link>
 
@@ -73,7 +73,7 @@ export default function Navbar({home,contact}) {
 
                         </span>
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href ="/">
+                        <Link href = {about?"/page/about":"/page/about"}>
                         <a>About</a>
                         </Link>
 
