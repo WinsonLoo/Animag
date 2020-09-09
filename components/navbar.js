@@ -3,29 +3,18 @@ import Link from 'next/link'
 
 export const siteTitle = 'Animag'
 
-export default function Navbar({home}) {
+export default function Navbar({home,contact}) {
     return (
         <div>
             <Head>
-                <meta
-                    name="description"
-                    content="Learn how to build a personal website using Next.js"
-                />
-                <meta
-                    property="og:image"
-                    content={`https://og-image.now.sh/${encodeURI(
-                        siteTitle
-                    )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-                />
                 <meta name="og:title" content={siteTitle} />
-                <meta name="twitter:card" content="summary_large_image" />
             </Head>
             {/* nav bar */}
             <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-4">
                 <div className="flex items-center flex-shrink-0 text-white mr-10">
                 {home ? (
                     <>
-                        <Link href="../index">
+                        <Link href="/">
                             <a className = "fill-current h-10 w-10 mr-10"><img src = "am.jpg" alt ="Image not Found"/></a>
                         </Link>
 
@@ -54,15 +43,15 @@ export default function Navbar({home}) {
 
                         </span>
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href ="/post/contactInfo">
+                        <Link href ="/page/contactInfo">
                         <a>Contact</a>
                         </Link>
                         </span>
                     </>
                     ):(
                     <>
-                        <Link href="../index">
-                            <a className = "fill-current h-10 w-10 mr-10"><img src = "am.jpg" alt ="Image not Found"/></a>
+                        <Link href="./index">
+                            <a className = "fill-current h-10 w-10 mr-10"><img src = "/am.jpg" alt ="Image not Found"/></a>
                         </Link>
 
                         <span className="font-semibold text-xl tracking-tight pr-10">
@@ -90,7 +79,7 @@ export default function Navbar({home}) {
 
                         </span>
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href ="/post/contactInfo">
+                        <Link href = {contact?"/page/contactInfo":"/page/contactInfo"}>
                         <a>Contact</a>
                         </Link>
                         </span>
@@ -105,7 +94,12 @@ export default function Navbar({home}) {
   
                 </div>
             </nav>
+            <style jsx global>{`
+            html,
+            body {
+                background-color: #fffaf0;
+            }
+          `}</style>
         </div>
-
     )
 }

@@ -7,8 +7,8 @@ export default function ContactInfo (){
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-            <Navbar/>
-            <div className="shadow-2xl">
+            <Navbar contact/>
+            <div className="shadow-2xl bg-orange-100">
                 <h2>Contact Info:weixiong8489@gmail.com</h2>
             </div>
         </div>

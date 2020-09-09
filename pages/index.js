@@ -13,10 +13,7 @@ export default function Home() {
           <link rel="icon" href="/animag.jpg" />
           <title>{siteTitle}</title>
       </Head>
-      <div>
-        <Link href="/posts/contactInfo">
-          <a >Contact Here!</a>
-        </Link> 
+      <div className = "container mx-auto">
         <ApolloProvider client={client}>
             <Anime/>
         </ApolloProvider>
