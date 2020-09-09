@@ -8,7 +8,7 @@ import Anime from './contents.js'
 export default function Home() {
   return (
     <div>
-      <Navbar/>
+      <Navbar home/>
       <Head>
           <link rel="icon" href="/animag.jpg" />
           <title>{siteTitle}</title>
