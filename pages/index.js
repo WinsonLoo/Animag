@@ -6,17 +6,20 @@ import Navbar, { siteTitle } from '../components/navbar.js'
 import Anime from './contents.js'
 
 export default function Home() {
-  return (
+
+
+return(
     <div>
       <Navbar home />
       <Head>
         <link rel="icon" href="/animag.jpg" />
         <title>{siteTitle}</title>
       </Head>
+
       <div className="container mx-auto">
         </div>
         <ApolloProvider client={client}>
-          <Anime />
+        <Anime/>
         </ApolloProvider>
     </div>
   );

@@ -1,9 +1,17 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import {useState} from 'react'
 
 export const siteTitle = 'Animag'
+export var searchName = ''
 
-export default function Navbar({home,contact,about}) {
+export default function Navbar({home,contact,about,search}) {
+    const [input,setInput] = useState("")
+
+    function getSearch(){
+        searchName = input
+    }
+
     return (
         <div>
             <Head>
@@ -73,13 +81,13 @@ export default function Navbar({home,contact,about}) {
 
                         </span>
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href = {about?"/page/about":"/page/about"}>
+                        <Link href = {about||search?"/page/about":"/page/about"}>
                         <a>About</a>
                         </Link>
 
                         </span>
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href = {contact?"/page/contactInfo":"/page/contactInfo"}>
+                        <Link href = {contact||search?"/page/contactInfo":"/page/contactInfo"}>
                         <a>Contact</a>
                         </Link>
                         </span>
@@ -87,11 +95,19 @@ export default function Navbar({home,contact,about}) {
                     )
                 }
                 </div>
-                {/*Temporay search bar */}
+                {/*search */}
                 <div className="justify-end pr-20">
-                    <input type="search" placeholder="Search title here..."/>
-                        {/*<svg className = "h-6 w-8 text-white"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>*/}          
-  
+                    <input 
+                        type="search"
+                        placeholder="Search title here..."
+                        value = {input}
+                        onChange={(e) => setInput(e.target.value)}
+                    />
+                    <button className = "ml-5" onClick={getSearch}>
+                         <Link href= {home?'/search':'/page/search'}>
+                              <a>Search</a>
+                        </Link>
+                    </button>
                 </div>
             </nav>
             <style jsx global>{`
