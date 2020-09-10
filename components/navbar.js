@@ -104,7 +104,7 @@ export default function Navbar({home,contact,about,search}) {
                         onChange={(e) => setInput(e.target.value)}
                     />
                     <button className = "ml-5" onClick={getSearch}>
-                         <Link href= {home?'/search':'/page/search'}>
+                         <Link href= {home?'/page/search':'/search'}>
                               <a>Search</a>
                         </Link>
                     </button>

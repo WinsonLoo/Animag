@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { ApolloProvider } from '@apollo/client';
-import Tester, { client } from '../lib/post.js'
 import Navbar, { siteTitle } from '../components/navbar.js'
-import Anime from './contents.js'
+import Anime,{client} from './contents.js'
+
 
 export default function Home() {
 
@@ -17,10 +17,14 @@ return(
       </Head>
 
       <div className="container mx-auto">
-        </div>
+        </div>        
+        <div className="container mx-auto p-8">
+        <div className="flex flex-row flex-wrap -mx-2">
         <ApolloProvider client={client}>
-        <Anime/>
+          <Anime/>
         </ApolloProvider>
+        </div>
+        </div>
     </div>
   );
 }
