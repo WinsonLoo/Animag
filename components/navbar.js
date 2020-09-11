@@ -34,26 +34,26 @@ export default function Navbar({home,contact,about,search}) {
 
                         <span className="font-semibold text-xl tracking-tight pr-10">
                             <Link href ="/">
-                            <a>Anime</a>
+                             <a>Anime</a>
                             </Link>
                         </span>
 
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href ="/">
-                        <a>Manga</a>
-                        </Link>
-
+                            <Link href ="/">
+                              <a>Manga</a>
+                            </Link>
                         </span>
-                        <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href ="/page/about">
-                        <a>About</a>
-                        </Link>
 
-                        </span>
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href ="/page/contactInfo">
-                        <a>Contact</a>
-                        </Link>
+                            <Link href ="/page/about">
+                              <a>About</a>
+                            </Link>
+                        </span>
+
+                        <span className="font-semibold text-xl tracking-tight pr-10">
+                            <Link href ="/page/contactInfo">
+                              <a>Contact</a>
+                            </Link>
                         </span>
                     </>
                     ):(
