@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { ApolloProvider } from '@apollo/client';
-import Navbar, { siteTitle } from '../components/navbar.js'
-import Anime,{client,Manga} from './contents.js'
+import Navbar, { siteTitle } from '../../components/navbar.js'
+import Anime,{client,Manga} from '../contents.js'
 
 
-export default function Home() {
+export default function Page() {
 
 return (
   <ApolloProvider client={client}>
@@ -27,11 +27,9 @@ return (
             <div className="container mx-auto p-8">
               <h1 className="text-4xl mb-2">Anime:</h1>
                 <div className="flex flex-row flex-wrap pl-8">
-                  <Anime/>
                 </div>
               <h1 className="text-4xl mb-2">Manga:</h1>
                 <div className="flex flex-row flex-wrap pl-8">
-                  <Manga/>
                 </div>
             </div>
           </td>

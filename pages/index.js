@@ -4,7 +4,6 @@ import { ApolloProvider } from '@apollo/client';
 import Navbar, { siteTitle } from '../components/navbar.js'
 import Anime,{client,Manga} from './contents.js'
 
-
 export default function Home() {
 
 return (
@@ -35,13 +34,13 @@ return (
                 </div>
             </div>
           </td>
-
           <td className="p-24">
             <button className ="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-lg p-2">
-                Next
+                <Link href="/page/[id]" as={`/page/${2}`}>
+                    Next
+                </Link>
             </button>
           </td>
-
         </tr>
       </table>
     </div>

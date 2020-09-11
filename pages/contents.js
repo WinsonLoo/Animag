@@ -40,6 +40,7 @@ export function Manga() {
         isAdult: false,
         search: searchName===""?null:searchName,
         perPage: 4,
+        currentPage: 1,
         type:"MANGA"
       }
     });
@@ -77,6 +78,7 @@ export default function Anime() {
           isAdult: false,
           search: searchName===""?null:searchName,
           perPage: 4,
+          currentPage:1,
           type:"ANIME"
         }
       });
