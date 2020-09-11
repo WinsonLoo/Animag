@@ -34,51 +34,12 @@ query ($type: MediaType, $isAdult: Boolean, $page: Int, $perPage: Int, $search: 
 }
 `;
 
-export function Manga(){
-  const { loading, error, data } = useQuery(GET_DATA,{
-    variables:{
-      isAdult: false,
-      type: "MANGA",
-      perPage: 4
-    }
-  });
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(
-    <div>
-        {/* card implementation starts here */}
-            <div  key={id} className="mr-4">
-            <div className="relative bg-white rounded border">
-            <picture className="block bg-gray-200 border-b ">
-                <img className="block object-cover" src={coverImage.large} alt="Image not found" />
-            </picture>
-            <div className="p-4">
-                <h3 className="text-lg font-bold">
-                <a className="stretched-link" href="#" title="Card 1">
-                    {title.romaji}
-                </a>
-                </h3>
-                <p className="block mb-2 text-sm text-gray-600">{averageScore===null?"0":averageScore} average scores</p>
-                <p>
-                    Type: {type}
-                    <br/>
-                    Popularity: {popularity}
-                </p>
-            </div>
-            </div>
-        </div>
-        {/*card implementation ends here*/}    
-    </div>
-));
-}
-
 export default function Anime() {
     const { loading, error, data } = useQuery(GET_DATA,{
         variables:{
           isAdult: false,
-          search: searchName===""?null:searchName,
-          perPage: 4
+          // search: searchName===""?null:searchName,
+          perPage: 8
         }
       });
       if (loading) return <p>Loading...</p>;
@@ -87,26 +48,22 @@ export default function Anime() {
     return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(
         <div>
             {/* card implementation starts here */}
-                <div  key={id} className="">
-                <div className="relative bg-white rounded border">
-                <picture className="block bg-gray-200 border-b ">
-                    <img className="block" src={coverImage.large} alt="Image not found" />
-                </picture>
-                <div className="p-4">
-                    <h3 className="text-lg font-bold">
-                    <a className="stretched-link" href="#" title="Card 1">
-                        {title.romaji}
-                    </a>
-                    </h3>
-                    <p className="block mb-2 text-sm text-gray-600">{averageScore===null?"0":averageScore} average scores</p>
-                    <p>
-                        Type: {type}
-                        <br/>
-                        Popularity: {popularity}
-                    </p>
+                <div key={id} className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
+                  <picture className="block bg-gray-200 ">
+                      <img className="h-64 w-full object-cover" src={coverImage.large} alt="Image not found" />
+                  </picture>
+                  <div className="p-4">
+                      <h3 className="flex flex-wrap text-lg font-bold">
+                          {title.romaji}
+                      </h3>
+                      <p className="block mb-2 text-sm text-gray-600">{averageScore===null?"0":averageScore} average scores</p>
+                      <p>
+                          Type: {type}
+                          <br/>
+                          Popularity: {popularity}
+                      </p>
+                  </div>
                 </div>
-                </div>
-            </div>
             {/*card implementation ends here*/}    
         </div>
     ));
