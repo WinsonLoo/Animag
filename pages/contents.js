@@ -39,7 +39,7 @@ export default function Anime() {
         variables:{
           isAdult: false,
           // search: searchName===""?null:searchName,
-          perPage: 8
+          perPage: 4
         }
       });
       if (loading) return <p>Loading...</p>;
