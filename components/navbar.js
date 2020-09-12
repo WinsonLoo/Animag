@@ -104,7 +104,7 @@ export default function Navbar({home,contact,about,search, pagination}) {
                         onChange={(e) => setInput(e.target.value)}
                     />
                     <button className = "ml-5 bg-transparent hover:bg-white-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded" onClick={getSearch}>
-                         <Link href= {home?'/post/search':'/search'}>
+                         <Link href= {home?'/post/search':'/post/search'}>
                               <a>Search</a>
                         </Link>
                     </button>

@@ -3,9 +3,10 @@ import Head from 'next/head'
 import {client,GET_DATA} from "../index"
 import { ApolloProvider, useQuery } from '@apollo/client';
 
-var searchDetail = searchName
+var searchDetail = '';
 
 export function Data(){
+    searchDetail = searchName
     const { loading, error, data } = useQuery(GET_DATA,{
         variables:{
           isAdult: false,
@@ -48,7 +49,7 @@ export default function SearchInfo(){
                 <Navbar search/>
             <ApolloProvider client={client}>
             <div className="container mx-auto p-8">
-              <h1 className="text-4xl mb-2">Search Result of: {searchDetail}</h1>
+              <h1 className="text-4xl mb-2">Search Result of: {searchName}</h1>
                 <div className="flex flex-row flex-wrap pl-8">
                   <Data/>
                 </div>
