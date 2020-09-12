@@ -11,7 +11,7 @@ var counter = 2;
 var status = 'a';
 
 
-function decrement(){
+export function decrement(){
   if(status ==='b'){
     counter--;
     status = 'a';
@@ -20,7 +20,7 @@ function decrement(){
   }
 }
 
-function increment(){
+export function increment(){
   if(status ==='a'){
     counter++;
     status = 'b';
@@ -29,7 +29,7 @@ function increment(){
   }
 }
 
-function Animepage(){
+export function Animepage(){
   const { loading, error, data } = useQuery(GET_DATA,{
     variables:{
       isAdult: false,
@@ -65,7 +65,7 @@ return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, t
 ));
 }
 
-function Mangapage(){
+export function Mangapage(){
   const { loading, error, data } = useQuery(GET_DATA,{
     variables:{
       isAdult: false,

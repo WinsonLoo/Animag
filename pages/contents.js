@@ -1,6 +1,5 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { useQuery, gql } from '@apollo/client';
-import {searchName} from '../components/navbar.js'
 
 export const client = new ApolloClient({
   uri: 'https://graphql.anilist.co',
@@ -48,7 +47,7 @@ export function Manga() {
   return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(
       <div>
           {/* card implementation starts here */}
-              <div key={id} className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
+              <div key={id+2000000} className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
                 <picture className="block bg-gray-200 ">
                     <img className="h-64 w-full object-cover" src={coverImage.large} alt="Image not found" />
                 </picture>
@@ -85,7 +84,7 @@ export default function Anime() {
     return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(
         <div>
             {/* card implementation starts here */}
-                <div key={id} className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
+                <div key={id+1000000} className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
                   <picture className="block bg-gray-200 ">
                       <img className="h-64 w-full object-cover" src={coverImage.large} alt="Image not found" />
                   </picture>

@@ -3,7 +3,7 @@ import Head from 'next/head'
 import {client,GET_DATA} from "../contents"
 import { ApolloProvider, useQuery } from '@apollo/client';
 
-function Data(){
+export function Data(){
     const { loading, error, data } = useQuery(GET_DATA,{
         variables:{
           isAdult: false,
@@ -37,7 +37,7 @@ function Data(){
     ));
 }
 
-export default function SearchInfo(){
+export default async function SearchInfo(){
     return(
         <div>
             <Head>
