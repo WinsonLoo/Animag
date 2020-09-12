@@ -15,6 +15,7 @@ return (
         <title>{siteTitle}</title>
       </Head>
       <table className="flex justify-between">
+      <tbody>
         <tr>
           <td className="p-24">
             <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-lg p-2">
@@ -42,6 +43,7 @@ return (
             </button>
           </td>
         </tr>
+        </tbody>
       </table>
     </div>
   </ApolloProvider>

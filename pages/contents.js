@@ -9,7 +9,7 @@ export const client = new ApolloClient({
 
 export const GET_DATA = gql`
 query ($type: MediaType, $isAdult: Boolean, $page: Int, $perPage: Int, $search: String) {
-  Page (, page: $page, perPage: $perPage) {
+  Page (page: $page, perPage: $perPage) {
     pageInfo {
       total
       currentPage
@@ -38,9 +38,7 @@ export function Manga() {
   const { loading, error, data } = useQuery(GET_DATA,{
       variables:{
         isAdult: false,
-        search: searchName===""?null:searchName,
         perPage: 4,
-        currentPage: 1,
         type:"MANGA"
       }
     });
@@ -76,9 +74,8 @@ export default function Anime() {
     const { loading, error, data } = useQuery(GET_DATA,{
         variables:{
           isAdult: false,
-          search: searchName===""?null:searchName,
           perPage: 4,
-          currentPage:1,
+          currentPage:2,
           type:"ANIME"
         }
       });

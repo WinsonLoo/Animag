@@ -5,7 +5,7 @@ import {useState} from 'react'
 export const siteTitle = 'Animag'
 export var searchName = ''
 
-export default function Navbar({home,contact,about,search}) {
+export default function Navbar({home,contact,about,search, pagination}) {
     const [input,setInput] = useState("")
 
     function getSearch(){
@@ -33,25 +33,25 @@ export default function Navbar({home,contact,about,search}) {
                         </span>
 
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                            <Link href ="/">
+                            <Link href ="/post/anime">
                              <a>Anime</a>
                             </Link>
                         </span>
 
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                            <Link href ="/">
+                            <Link href ="/post/manga">
                               <a>Manga</a>
                             </Link>
                         </span>
 
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                            <Link href ="/page/about">
+                            <Link href ="/post/about">
                               <a>About</a>
                             </Link>
                         </span>
 
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                            <Link href ="/page/contactInfo">
+                            <Link href ="/post/contactInfo">
                               <a>Contact</a>
                             </Link>
                         </span>
@@ -69,25 +69,25 @@ export default function Navbar({home,contact,about,search}) {
 
                         </span>
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href ="/">
+                        <Link href ={pagination?"../post/anime":"../post/anime"}>
                         <a>Anime</a>
                         </Link>
 
                         </span>
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href ="/">
+                        <Link href ={pagination?"../post/manga":"../post/manga"}>
                         <a>Manga</a>
                         </Link>
 
                         </span>
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href = {about||search?"/page/about":"/page/about"}>
+                        <Link href = {pagination?"../post/about":"../post/about"}>
                         <a>About</a>
                         </Link>
 
                         </span>
                         <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href = {contact||search?"/page/contactInfo":"/page/contactInfo"}>
+                        <Link href = {pagination?"../post/contactInfo":"../post/contactInfo"}>
                         <a>Contact</a>
                         </Link>
                         </span>
@@ -104,7 +104,7 @@ export default function Navbar({home,contact,about,search}) {
                         onChange={(e) => setInput(e.target.value)}
                     />
                     <button className = "ml-5 bg-transparent hover:bg-white-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded" onClick={getSearch}>
-                         <Link href= {home?'/page/search':'/search'}>
+                         <Link href= {home?'/post/search':'/search'}>
                               <a>Search</a>
                         </Link>
                     </button>
