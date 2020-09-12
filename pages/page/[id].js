@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useQuery, ApolloProvider } from '@apollo/client';
-import { useState} from 'react'
 import Navbar, { siteTitle } from '../../components/navbar.js'
-import {client,GET_DATA} from '../contents.js'
+import {client,GET_DATA} from '../index.js'
 
 var counter = 2;
 
@@ -42,9 +41,9 @@ export function Animepage(){
   if (error) return <p></p>;
 
 return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(
-    <div>
+    <div key={id}>
         {/* card implementation starts here */}
-            <div key={id} className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
+            <div className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
               <picture className="block bg-gray-200 ">
                   <img className="h-64 w-full object-cover" src={coverImage.large} alt="Image not found" />
               </picture>
@@ -78,9 +77,9 @@ export function Mangapage(){
   if (error) return <p></p>;
 
 return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(
-    <div>
+    <div key={id}>
         {/* card implementation starts here */}
-            <div key={id} className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
+            <div  className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
               <picture className="block bg-gray-200 ">
                   <img className="h-64 w-full object-cover" src={coverImage.large} alt="Image not found" />
               </picture>

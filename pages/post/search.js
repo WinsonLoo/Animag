@@ -1,22 +1,24 @@
 import Navbar, { siteTitle, searchName } from '../../components/navbar'
 import Head from 'next/head'
-import {client,GET_DATA} from "../contents"
+import {client,GET_DATA} from "../index"
 import { ApolloProvider, useQuery } from '@apollo/client';
+
+var searchDetail = searchName
 
 export function Data(){
     const { loading, error, data } = useQuery(GET_DATA,{
         variables:{
           isAdult: false,
-          search: searchName,
+          search: searchDetail,
         }
       });
       if (loading) return <p></p>;
       if (error) return <p>Error :(</p>;
   
     return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(
-        <div>
+        <div key={id}>
             {/* card implementation starts here */}
-                <div key={id} className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
+                <div className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
                   <picture className="block bg-gray-200 ">
                       <img className="h-64 w-full object-cover" src={coverImage.large} alt="Image not found" />
                   </picture>
@@ -37,7 +39,7 @@ export function Data(){
     ));
 }
 
-export default async function SearchInfo(){
+export default function SearchInfo(){
     return(
         <div>
             <Head>
@@ -46,7 +48,7 @@ export default async function SearchInfo(){
                 <Navbar search/>
             <ApolloProvider client={client}>
             <div className="container mx-auto p-8">
-              <h1 className="text-4xl mb-2">Search Result of: {searchName}</h1>
+              <h1 className="text-4xl mb-2">Search Result of: {searchDetail}</h1>
                 <div className="flex flex-row flex-wrap pl-8">
                   <Data/>
                 </div>
