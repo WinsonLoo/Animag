@@ -21,16 +21,22 @@ export function Data(){
                   <picture className="block bg-gray-200 ">
                       <img className="h-64 w-56 object-cover" src={coverImage.large} alt="Image not found" />
                   </picture>
-                  <div className="p-4 h-64">
+                  <div className="p-4 h-56">
+                    <div className = "h-24">
                       <h3 className="flex flex-wrap text-lg font-bold overflow-visible">
                           {title.romaji}
                       </h3>
-                      <p className="block mb-2 text-sm text-gray-600">{averageScore===null?"0":averageScore} average scores</p>
+                    </div>
+                    <div className = "pt-2">
+                      <p className="block mb-2 text-sm text-gray-600">
+                         average scores of <span className="font-bold">{averageScore===null?"0":averageScore} </span> 
+                      </p>
                       <p>
                           Type: {type}
                           <br/>
                           Popularity: {popularity}
                       </p>
+                    </div>
                   </div>
                 </div>
             {/*card implementation ends here*/}    
