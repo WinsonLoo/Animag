@@ -53,7 +53,7 @@ export function Manga() {
           {/* card implementation starts here */}
               <div className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
                 <picture className="block bg-gray-200 ">
-                    <img className="h-64 w-full object-cover" src={coverImage.large} alt="Image not found" />
+                    <img className="h-64 w-56 object-cover" src={coverImage.large} alt="Image not found" />
                 </picture>
                 <div className="p-4">
                     <h3 className="flex flex-wrap text-lg font-bold">
@@ -90,7 +90,7 @@ export function Anime() {
             {/* card implementation starts here */}
                 <div className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10">
                   <picture className="block bg-gray-200 ">
-                      <img className="h-64 w-full object-cover" src={coverImage.large} alt="Image not found" />
+                      <img className="h-64 w-56 object-cover" src={coverImage.large} alt="Image not found" />
                   </picture>
                   <div className="p-4">
                       <h3 className="flex flex-wrap text-lg font-bold">
