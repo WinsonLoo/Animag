@@ -38,7 +38,7 @@ export function Animepage(){
       type:"ANIME"
     }
   });
-  if (loading) return <p><Loading anime/></p>;
+  if (loading) return <Loading anime/>;
   if (error) return <p>Error :(</p>;
 
 return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(
@@ -79,7 +79,7 @@ export function Mangapage(){
       type:"MANGA"
     }
   });
-  if (loading) return <p><Loading manga/></p>;
+  if (loading) return <Loading manga/>;
   if (error) return <p>Error :(</p>;
 
 return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(

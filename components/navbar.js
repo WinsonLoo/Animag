@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import {useState} from 'react'
+import {client,GET_DATA} from "../pages/index"
+import { ApolloProvider, useQuery } from '@apollo/client';
 
 export const siteTitle = 'Animag'
 export var searchName = ''
@@ -11,6 +13,13 @@ export default function Navbar({home,contact,about,search, pagination}) {
     function getSearch(){
         searchName = input
     }
+
+    // function redirect(target){
+    //     if(target.key === "Enter"){
+    //         const {href} = window.location;
+    //         window.location.href = `/post/search`;
+    //     }
+    // }
 
     return (
         <div>
@@ -29,18 +38,6 @@ export default function Navbar({home,contact,about,search, pagination}) {
                         <span className="font-semibold text-xl tracking-tight pr-10">
                             <Link href ="/">
                             <a>Home</a>
-                            </Link>
-                        </span>
-
-                        <span className="font-semibold text-xl tracking-tight pr-10">
-                            <Link href ="/post/anime">
-                             <a>Anime</a>
-                            </Link>
-                        </span>
-
-                        <span className="font-semibold text-xl tracking-tight pr-10">
-                            <Link href ="/post/manga">
-                              <a>Manga</a>
                             </Link>
                         </span>
 
@@ -66,20 +63,8 @@ export default function Navbar({home,contact,about,search, pagination}) {
                         <Link href ="/">
                         <a>Home</a>
                         </Link>
-
                         </span>
-                        <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href ={pagination?"../post/anime":"../post/anime"}>
-                        <a>Anime</a>
-                        </Link>
 
-                        </span>
-                        <span className="font-semibold text-xl tracking-tight pr-10">
-                        <Link href ={pagination?"../post/manga":"../post/manga"}>
-                        <a>Manga</a>
-                        </Link>
-
-                        </span>
                         <span className="font-semibold text-xl tracking-tight pr-10">
                         <Link href = {pagination?"../post/about":"../post/about"}>
                         <a>About</a>
@@ -96,19 +81,22 @@ export default function Navbar({home,contact,about,search, pagination}) {
                 }
                 </div>
                 {/*search */}
-                <div className="justify-end pr-20">
+                <form action="/post/search" className="justify-end pr-20">
                     <input 
                         type="search"
                         placeholder="Search title here..."
                         value = {input}
                         onChange={(e) => setInput(e.target.value)}
                     />
-                    <button className = "ml-5 bg-transparent hover:bg-white-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded" onClick={getSearch}>
-                         <Link href= {home?'/post/search':'/post/search'}>
-                              <a>Search</a>
-                        </Link>
-                    </button>
-                </div>
+                    <Link href= {home?'/post/search':'/post/search'}>
+                        <input 
+                            type = "submit" 
+                            value = "Search" 
+                            className = "ml-5 bg-transparent hover:bg-white-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded" 
+                            onClick={getSearch}
+                        />
+                    </Link>
+                </form>
             </nav>
             <style jsx global>{`
             html,

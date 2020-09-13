@@ -48,7 +48,7 @@ export function Anime() {
         type:"ANIME"
       }
     });
-    if (loading) return <p><Loading anime/></p>;
+    if (loading) return <Loading anime/>;
     if (error) return <p>Error :(</p>;
 
   return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(
@@ -89,7 +89,7 @@ export function Manga() {
         type:"MANGA"
       }
     });
-    if (loading) return <p><Loading manga/></p>;
+    if (loading) return <Loading manga/>;
     if (error) return <p>Error :(</p>;
 
   return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(
@@ -134,7 +134,7 @@ return (
         <title>{siteTitle}</title>
       </Head>
         <div className ="flex">
-              <button onCLick = {() => alert('No Previous Page!!')} className="w-1/5 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-lg p-2">
+              <button onClick = {() => alert('No Previous Page!!')} className="w-1/5 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-lg p-2">
                   Prev
               </button>
 

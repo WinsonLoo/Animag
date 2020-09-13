@@ -4,7 +4,7 @@ import {client,GET_DATA} from "../index"
 import { ApolloProvider, useQuery } from '@apollo/client';
 
 
-export function Data(){
+export function Search(){
     const { loading, error, data } = useQuery(GET_DATA,{
         variables:{
           isAdult: false,
@@ -55,7 +55,7 @@ export default function SearchInfo(){
             <div className="container mx-auto p-8">
               <h1 className="text-4xl mb-2">Search Result of: {searchName}</h1>
                 <div className="flex flex-row flex-wrap pl-8">
-                  <Data/>
+                  <Search/>
                 </div>
 
             </div>
