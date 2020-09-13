@@ -4,6 +4,7 @@ import { ApolloProvider } from '@apollo/client';
 import Navbar, { siteTitle } from '../components/navbar.js'
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { useQuery, gql } from '@apollo/client';
+import Loading from '../components/loading.js'
 
 export const client = new ApolloClient({
   uri: 'https://graphql.anilist.co',
@@ -47,15 +48,15 @@ export function Anime() {
         type:"ANIME"
       }
     });
-    if (loading) return <p>...Loading Anime...</p>;
+    if (loading) return <p><Loading anime/></p>;
     if (error) return <p>Error :(</p>;
 
   return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(
       <div key={id} >
           {/* card implementation starts here */}
-              <div className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10 w-56">
-                  <picture className="block bg-gray-200 ">
-                      <img className="h-64 w-56 object-cover" src={coverImage.large} alt="Image not found" />
+              <div className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10 w-64">
+                  <picture className="block bg-gray-200">
+                      <img className="h-70 w-64 object-cover" src={coverImage.large} alt="Image not found" />
                   </picture>
                   <div className="p-4 h-56">
                     <div className = "h-24">
@@ -88,35 +89,35 @@ export function Manga() {
         type:"MANGA"
       }
     });
-    if (loading) return <p>...Loading Manga...</p>;
+    if (loading) return <p><Loading manga/></p>;
     if (error) return <p>Error :(</p>;
 
   return data.Page.media.map(({ id, title, coverImage, popularity, averageScore, type}) =>(
       <div key={id}>
           {/* card implementation starts here */}
               
-          <div className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10 w-56">
-          <picture className="block bg-gray-200 ">
-              <img className="h-64 w-56 object-cover" src={coverImage.large} alt="Image not found" />
-          </picture>
-          <div className="p-4 h-56">
-            <div className = "h-24">
-              <h3 className="flex flex-wrap text-lg font-bold overflow-visible">
-                  {title.romaji}
-              </h3>
-            </div>
-            <div className = "pt-2">
-              <p className="block mb-2 text-sm text-gray-600">
-                 average scores of <span className="font-bold">{averageScore===null?"0":averageScore} </span> 
-              </p>
-              <p>
-                  Type: {type}
-                  <br/>
-                  Popularity: {popularity}
-              </p>
-            </div>
-          </div>
-        </div>
+          <div className="relative bg-white rounded border-b-4 p-0 mr-10 mb-10 w-64">
+                  <picture className="block bg-gray-200">
+                      <img className="h-70 w-64 object-cover" src={coverImage.large} alt="Image not found" />
+                  </picture>
+                  <div className="p-4 h-56">
+                    <div className = "h-24">
+                      <h3 className="flex flex-wrap text-lg font-bold overflow-visible">
+                          {title.romaji}
+                      </h3>
+                    </div>
+                    <div className = "pt-2">
+                      <p className="block mb-2 text-sm text-gray-600">
+                         average scores of <span className="font-bold">{averageScore===null?"0":averageScore} </span> 
+                      </p>
+                      <p>
+                          Type: {type}
+                          <br/>
+                          Popularity: {popularity}
+                      </p>
+                    </div>
+                  </div>
+                </div>
           {/*card implementation ends here*/}    
       </div>
   ));
@@ -133,7 +134,7 @@ return (
         <title>{siteTitle}</title>
       </Head>
         <div className ="flex">
-              <button className="w-1/5 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-lg p-2">
+              <button onCLick = {() => alert('No Previous Page!!')} className="w-1/5 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-lg p-2">
                   Prev
               </button>
 
@@ -147,11 +148,13 @@ return (
                     <Manga/>
                   </div>
               </div>
-              <button className ="w-1/5 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-lg p-2">
+              
                   <Link href="/page/[id]" as={`/page/${2}`}>
+                    <button className ="w-1/5 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-lg p-2">
                       Next
+                    </button>
                   </Link>
-              </button>
+              
         </div>
     </div>
   </ApolloProvider>
